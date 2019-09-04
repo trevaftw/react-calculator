@@ -81,7 +81,7 @@ class App extends Component {
       })
     }
     else {
-      alert('hm')
+      alert('error')
     }
   }
 
@@ -128,6 +128,14 @@ class App extends Component {
           <button onClick={this.handleNumber} value="0" >0</button>
           <button onClick={this.handleAnswer}>=</button>
           <button onClick={this.handleOperator} value="/">/</button>
+        </div><br />
+        <div>
+          History:<br />
+          {this.state.history.map(query => {
+            return (
+              <li>{query}</li>
+            )
+          })}
         </div>
         <pre>
           {JSON.stringify(this.state, null, 2)}
