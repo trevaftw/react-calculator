@@ -6,7 +6,9 @@ class App extends Component {
     input: '',
     firstValue: '',
     secondValue: '',
-    operator: ''
+    operator: '',
+    result: '',
+    history: [],
   }
 
   handleInput = (event) => {
@@ -29,7 +31,7 @@ class App extends Component {
         ...this.state,
         secondValue: input
       })
-    }else{
+    } else {
       alert('Please select input')
     }
   }
@@ -42,18 +44,31 @@ class App extends Component {
   }
 
   handleAnswer = () => {
-    if(this.state.firstValue === '' || this.state.secondValue === '' || this.state.operator === ''){
+    let firstNumber = Number(this.state.firstValue);
+    let secondNumber = Number(this.state.secondValue);
+    let operatorValue = this.state.operator;
+    if (firstNumber === '' || secondNumber === '' || operatorValue === '') {
       alert('Please complete all fields')
+    } else if (operatorValue === '+') {
+      console.log('firstNumber:', firstNumber, '; secondNumber:', secondNumber)
+      console.log('answer:', Number(firstNumber + secondNumber))
+      let answer = Number(firstNumber + secondNumber);
+      this.setState({
+        ...this.state,
+        result: answer
+      })
     }
-    else{
-      alert('almost')
+    else {
+      alert('hm')
     }
-    this.handleClear();
   }
 
   handleClear = () => {
     this.setState({
-      input: '',
+      ...this.state,
+      firstValue: '',
+      secondValue: '',
+      operator: '',
     })
   }
 
@@ -67,6 +82,7 @@ class App extends Component {
         First Number: {this.state.firstValue} <br />
         Operator: {this.state.operator} <br />
         Second Number: {this.state.secondValue}<br />
+        Answer: {this.state.result} <br /><br />
         <select onChange={this.handleInput}>
           <option>(select number)</option>
           <option value="first">First Number</option>
