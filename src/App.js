@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+
+  }
+
+  handleNumber = (event) => {
+    console.log(event.target.value)
+  }
+  render() {
+
+    return (
+      <>
+        <div className="App">
+          <h1>Calculator</h1>
+        </div>
+        <div>
+        <button onClick={this.handleNumber} value="1" >1</button>
+        <button onClick={this.handleNumber} value="2" >2</button>
+        <button onClick={this.handleNumber} value="3" >3</button><br />
+        <button onClick={this.handleNumber} value="4" >4</button>
+        <button onClick={this.handleNumber} value="5" >5</button>
+        <button onClick={this.handleNumber} value="6" >6</button><br />
+        <button onClick={this.handleNumber} value="7" >7</button>
+        <button onClick={this.handleNumber} value="8" >8</button>
+        <button onClick={this.handleNumber} value="9" >9</button><br />
+        <button onClick={this.handleNumber} value="0" >0</button>
+        </div>
+      </>
+    );
+  }
 }
 
 export default App;
