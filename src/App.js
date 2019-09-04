@@ -42,15 +42,12 @@ class App extends Component {
   }
 
   handleAnswer = () => {
-    // let array = this.state.input
-    // // var query = '';
-    // for(let i = 0; i < array.length; i ++){
-    //   if(Number(array[i])){
-    //     console.log('number:', array[i])
-    //   }else{
-    //     console.log('operator:', array[i])
-    //   }
-    // }
+    if(this.state.firstValue === '' || this.state.secondValue === '' || this.state.operator === ''){
+      alert('Please complete all fields')
+    }
+    else{
+      alert('almost')
+    }
     this.handleClear();
   }
 
@@ -67,7 +64,9 @@ class App extends Component {
         <div className="App">
           <h1>Calculator</h1>
         </div>
-        First: select input<br />
+        First Number: {this.state.firstValue} <br />
+        Operator: {this.state.operator} <br />
+        Second Number: {this.state.secondValue}<br />
         <select onChange={this.handleInput}>
           <option>(select number)</option>
           <option value="first">First Number</option>
