@@ -44,9 +44,11 @@ class App extends Component {
   }
 
   handleAnswer = () => {
+
     let firstNumber = Number(this.state.firstValue);
     let secondNumber = Number(this.state.secondValue);
     let operatorValue = this.state.operator;
+
     if (firstNumber === '' || secondNumber === '' || operatorValue === '') {
       alert('Please complete all fields')
     } else if (operatorValue === '+') {
@@ -55,8 +57,10 @@ class App extends Component {
       let answer = Number(firstNumber + secondNumber);
       this.setState({
         ...this.state,
-        result: answer
+        result: answer,
+        history: [...this.state.history, (firstNumber + operatorValue + secondNumber + '=' + answer) ]
       })
+
     }
     else {
       alert('hm')
@@ -69,6 +73,7 @@ class App extends Component {
       firstValue: '',
       secondValue: '',
       operator: '',
+      result: '',
     })
   }
 
