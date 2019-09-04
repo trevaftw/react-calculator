@@ -52,15 +52,33 @@ class App extends Component {
     if (firstNumber === '' || secondNumber === '' || operatorValue === '') {
       alert('Please complete all fields')
     } else if (operatorValue === '+') {
-      console.log('firstNumber:', firstNumber, '; secondNumber:', secondNumber)
-      console.log('answer:', Number(firstNumber + secondNumber))
       let answer = Number(firstNumber + secondNumber);
       this.setState({
         ...this.state,
         result: answer,
-        history: [...this.state.history, (firstNumber + operatorValue + secondNumber + '=' + answer) ]
+        history: [...this.state.history, (firstNumber + operatorValue + secondNumber + '=' + answer)]
       })
-
+    } else if (operatorValue === '-') {
+      let answer = Number(firstNumber - secondNumber);
+      this.setState({
+        ...this.state,
+        result: answer,
+        history: [...this.state.history, (firstNumber + operatorValue + secondNumber + '=' + answer)]
+      })
+    } else if (operatorValue === '*') {
+      let answer = Number(firstNumber * secondNumber);
+      this.setState({
+        ...this.state,
+        result: answer,
+        history: [...this.state.history, (firstNumber + operatorValue + secondNumber + '=' + answer)]
+      })
+    } else if (operatorValue === '/') {
+      let answer = Number(firstNumber / secondNumber);
+      this.setState({
+        ...this.state,
+        result: answer,
+        history: [...this.state.history, (firstNumber + operatorValue + secondNumber + '=' + answer)]
+      })
     }
     else {
       alert('hm')
