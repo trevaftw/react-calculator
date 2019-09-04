@@ -3,33 +3,60 @@ import './App.css';
 
 class App extends Component {
   state = {
-    math: '',
-    answer: ''
+    input: '',
+    firstValue: '',
+    secondValue: '',
+    operator: ''
   }
 
   handleInput = (event) => {
-    this.setState ({
-      math: [...this.state.math, event.target.value]
+    this.setState({
+      ...this.state,
+      input: event.target.value
     })
-    console.log('button clicked:', event.target.value)
+  }
+
+  handleNumber = (event) => {
+    if (this.state.input === 'first') {
+      let input = this.state.firstValue + event.target.value;
+      this.setState({
+        ...this.state,
+        firstValue: input
+      })
+    } else if (this.state.input === 'second') {
+      let input = this.state.secondValue + event.target.value;
+      this.setState({
+        ...this.state,
+        secondValue: input
+      })
+    }else{
+      alert('Please select input')
+    }
+  }
+
+  handleOperator = (event) => {
+    this.setState({
+      ...this.state,
+      operator: event.target.value
+    })
   }
 
   handleAnswer = () => {
-    let array = this.state.math
-    // var query = '';
-    for(let i = 0; i < array.length; i ++){
-      if(Number(array[i])){
-        console.log('number:', array[i])
-      }else{
-        console.log('operator:', array[i])
-      }
-    }
+    // let array = this.state.input
+    // // var query = '';
+    // for(let i = 0; i < array.length; i ++){
+    //   if(Number(array[i])){
+    //     console.log('number:', array[i])
+    //   }else{
+    //     console.log('operator:', array[i])
+    //   }
+    // }
     this.handleClear();
   }
 
   handleClear = () => {
     this.setState({
-      math: '',
+      input: '',
     })
   }
 
@@ -40,24 +67,29 @@ class App extends Component {
         <div className="App">
           <h1>Calculator</h1>
         </div>
-        
+        First: select input<br />
+        <select onChange={this.handleInput}>
+          <option>(select number)</option>
+          <option value="first">First Number</option>
+          <option value="second">Second Number</option>
+        </select>
         <div>
-        <button onClick={this.handleInput} value="1" >1</button>
-        <button onClick={this.handleInput} value="2" >2</button>
-        <button onClick={this.handleInput} value="3" >3</button>
-        <button onClick={this.handleInput} value="+">+</button><br />
-        <button onClick={this.handleInput} value="4" >4</button>
-        <button onClick={this.handleInput} value="5" >5</button>
-        <button onClick={this.handleInput} value="6" >6</button>
-        <button onClick={this.handleInput} value="-">-</button><br />
-        <button onClick={this.handleInput} value="7" >7</button>
-        <button onClick={this.handleInput} value="8" >8</button>
-        <button onClick={this.handleInput} value="9" >9</button>
-        <button onClick={this.handleInput} value="*">*</button><br />
-        <button onClick={this.handleClear}>C</button>
-        <button onClick={this.handleInput} value="0" >0</button>
-        <button onClick={this.handleAnswer}>=</button>
-        <button onClick={this.handleInput} value="/">/</button>
+          <button onClick={this.handleNumber} value="1" >1</button>
+          <button onClick={this.handleNumber} value="2" >2</button>
+          <button onClick={this.handleNumber} value="3" >3</button>
+          <button onClick={this.handleOperator} value="+">+</button><br />
+          <button onClick={this.handleNumber} value="4" >4</button>
+          <button onClick={this.handleNumber} value="5" >5</button>
+          <button onClick={this.handleNumber} value="6" >6</button>
+          <button onClick={this.handleOperator} value="-">-</button><br />
+          <button onClick={this.handleNumber} value="7" >7</button>
+          <button onClick={this.handleNumber} value="8" >8</button>
+          <button onClick={this.handleNumber} value="9" >9</button>
+          <button onClick={this.handleOperator} value="*">*</button><br />
+          <button onClick={this.handleClear}>C</button>
+          <button onClick={this.handleNumber} value="0" >0</button>
+          <button onClick={this.handleAnswer}>=</button>
+          <button onClick={this.handleOperator} value="/">/</button>
         </div>
         <pre>
           {JSON.stringify(this.state, null, 2)}
