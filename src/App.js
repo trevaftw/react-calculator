@@ -9,6 +9,8 @@ class App extends Component {
   handleNumber = (event) => {
     console.log(event.target.value)
   }
+
+
   render() {
 
     return (
@@ -19,14 +21,21 @@ class App extends Component {
         <div>
         <button onClick={this.handleNumber} value="1" >1</button>
         <button onClick={this.handleNumber} value="2" >2</button>
-        <button onClick={this.handleNumber} value="3" >3</button><br />
+        <button onClick={this.handleNumber} value="3" >3</button>
+        <button >+</button><br />
         <button onClick={this.handleNumber} value="4" >4</button>
         <button onClick={this.handleNumber} value="5" >5</button>
-        <button onClick={this.handleNumber} value="6" >6</button><br />
+        <button onClick={this.handleNumber} value="6" >6</button>
+        <button >-</button><br />
         <button onClick={this.handleNumber} value="7" >7</button>
         <button onClick={this.handleNumber} value="8" >8</button>
-        <button onClick={this.handleNumber} value="9" >9</button><br />
+        <button onClick={this.handleNumber} value="9" >9</button>
+        <button >*</button><br />
+        <button >C</button>
         <button onClick={this.handleNumber} value="0" >0</button>
+        <button >=</button>
+        <button >/</button>
+
         </div>
       </>
     );
